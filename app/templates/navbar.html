@@ -1,16 +1,30 @@
 <div>
-      {% block styles %}
+    {% block styles %}
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='navbar_styles.css')}}">
-      {% endblock %}
-
-      <div class="nav_container">
+    {% endblock %}
+    {% block javascript %}
+        <script src="{{ url_for('static',filename='navbar.js') }}"></script>
+        <!-- The contents of myscript.js will be loaded inside the script tag -->
+    {% endblock %}
+    <div class="nav_container">
         <div class="nav_home_sect">
           <img src="/static/ic_newspaper.svg">
           <p>News App</p>
         </div>
         <div class="nav_search_sect">
-
+            <div class="img_btn" id="btn_filter">
+                <div class="img_container">
+                    <img src="/static/ic_filter.svg">
+                </div>
+                <p>Filter</p>
+            </div>
+            <div class="img_btn" id="btn_sort">
+                <div class="img_container">
+                    <img src="/static/ic_sort.svg">
+                </div>
+                <p>Sort</p>
+            </div>
         </div>
-      </div>
+    </div>
 
 </div>
