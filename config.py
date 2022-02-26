@@ -9,9 +9,11 @@ class Config:
 
 
 class DevConfig:
+    """The development configurations will be in this class"""
     DEBUG = True
     pass
 
 
 class ProdConfig:
+    """The production configurations will be in this class"""
     pass
