@@ -7,16 +7,7 @@
 {% block javascript %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
     </script>
-    <script type=text/javascript >
-        $(function() {
-          $('#btn_top_headlines').on('click', function(e) {
-            e.preventDefault()
-            $('#btn_everything').removeClass("img_btn_selected");
-            $('#btn_top_headlines').addClass("img_btn_selected");
-            return false;
-          });
-        });
-    </script>
+    <script src="{{ url_for('static',filename='index.js') }}"></script>
     <!-- The contents of myscript.js will be loaded inside the script tag -->
 {% endblock %}
 
@@ -31,7 +22,17 @@
             </div>
         </div>
         <div class="sources_container">
-            <p>Some text</p>
+            <div class="everything_sources_container">
+                <p class="centered_text">Type a search query into the search box above, to get related news.</p>
+            </div>
+            <div class="top_headlines_sources_container">
+                <ul>
+                    {% for agency in agencies_list %}
+                        <li>{{ agency.source_name }}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
         </div>
     </div>
 {% endblock %}
