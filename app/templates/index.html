@@ -1,2 +1,27 @@
 {% extends 'base.html' %}
 
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='index_styles.css')}}">
+{% endblock %}
+{% block javascript %}
+    <script src="{{ url_for('static',filename='index.js') }}"></script>
+    <!-- The contents of myscript.js will be loaded inside the script tag -->
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="index_filters">
+            <div class="img_btn" id="btn_top_headlines">
+                <p>Top headlines</p>
+            </div>
+            <div class="img_btn" id="btn_everything">
+                <p>Everything</p>
+            </div>
+        </div>
+        <div class="sources_container">
+            <p>Some text</p>
+        </div>
+    </div>
+{% endblock %}
+

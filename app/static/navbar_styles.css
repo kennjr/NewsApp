@@ -77,3 +77,15 @@
     align-self: center;
     border-radius: 50%;
 }
+
+.index_filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 7px 3px;
+}
+
+.img_btn_selected{
+    background-color: var(--primary-color);
+    color: #fff;
+}

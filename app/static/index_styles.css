@@ -2,4 +2,40 @@
     --primary-color: #1a8cff;
 }
 
+.container{
+    display: flex;
+    flex-direction: column;
+}
 
+.index_filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.img_btn{
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 0px 15px;
+    margin: 0px 10px;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #000;
+    border-radius: 50px;
+}
+
+.img_btn:hover{
+    cursor: pointer;
+    background:rgba(232, 232, 232, 0.5);
+}
+
+.img_btn:active{
+    cursor: pointer;
+    background:rgba(191, 191, 191, 0.5);
+}
+
+.img_btn_selected{
+    background-color: var(--primary-color);
+    color: #fff;
+}
