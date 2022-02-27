@@ -3,10 +3,17 @@
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='navbar_styles.css')}}">
     {% endblock %}
     {% block javascript %}
-        <script src="{{ url_for('static',filename='navbar.js') }}"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+        </script>
+        <script src="{{ url_for('static',filename='navbar.js') }}">
+
+        </script>
+
+
         <!-- The contents of myscript.js will be loaded inside the script tag -->
     {% endblock %}
-    <div class="nav_container">
+    <div class="container">
+        <div class="nav_container">
         <div class="nav_home_sect">
           <img src="/static/ic_newspaper.svg">
           <p>News App</p>
@@ -26,5 +33,11 @@
             </div>
         </div>
     </div>
+        <div class="filters_container">
 
+        </div>
+        <div class="sort_container">
+
+        </div>
+    </div>
 </div>

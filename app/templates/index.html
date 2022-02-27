@@ -5,7 +5,18 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='index_styles.css')}}">
 {% endblock %}
 {% block javascript %}
-    <script src="{{ url_for('static',filename='index.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+    <script type=text/javascript >
+        $(function() {
+          $('#btn_top_headlines').on('click', function(e) {
+            e.preventDefault()
+            $('#btn_everything').removeClass("img_btn_selected");
+            $('#btn_top_headlines').addClass("img_btn_selected");
+            return false;
+          });
+        });
+    </script>
     <!-- The contents of myscript.js will be loaded inside the script tag -->
 {% endblock %}
 

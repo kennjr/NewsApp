@@ -38,4 +38,16 @@
 .img_btn_selected{
     background-color: var(--primary-color);
     color: #fff;
+    opacity: 0.6;
 }
+
+.img_btn_selected:hover{
+    cursor: pointer;
+    background:rgba(26, 140, 255, 0.8);
+}
+
+.img_btn_selected:active{
+    cursor: pointer;
+    background:rgba(26, 140, 255, 1);
+}
+
