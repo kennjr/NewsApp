@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from app.requests import get_news_sources_list
+from app.requests import get_news_sources_list, get_news_from_src
 
 
 @app.route('/')
@@ -12,9 +12,10 @@ def index():
 
 @app.route('/news/top-headlines/source/<news_src>')
 def news_from_src(news_src):
-    # todo make an api request for news with the src in the param
+
     title = f"News - {news_src}"
-    return render_template('news_list.html', title=title, news_array=f"The array with all the news objs {news_src}")
+    news_results = get_news_from_src(news_src)
+    return render_template('news_list.html', title=title, news_array=news_results)
 
 
 @app.route('/news/top-headlines/country/<country>')

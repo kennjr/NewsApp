@@ -1,4 +1,7 @@
-import app
+import urllib.request
+import json
+import datetime
+from datetime import timedelta
 
 
 # Getting api key
@@ -7,7 +10,7 @@ from config import Config
 
 api_key = None
 # Getting the movie base url
-base_url = None
+base_url = ""
 news_sources_list = {}
 
 
@@ -33,3 +36,64 @@ def get_news_sources_list():
         return the_list
     else:
         return None
+
+
+def process_results(news_results_list, custom_url):
+    """
+    Function  that processes the movie result and transform them to a list of Objects
+    Args:
+        news_results_list: A list of dictionaries that contain movie details
+    Returns :
+        movie_results: A list of movie objects
+    """
+    news_results = []
+    for news_item in news_results_list:
+        title = news_item.get('title')
+        description = news_item.get("description")
+        url = news_item.get("url")
+        url_to_img = news_item.get("urlToImage")
+        author = news_item.get("author")
+        content = news_item.get("content")
+        published_at = news_item.get("publishedAt")
+        source = news_item['source'].get("name")
+        if author is None:
+            author = "Anonymous"
+
+        if url:
+            publish_date = published_at.split("T")[0]
+            date_fields = publish_date.split("-")
+            news_publish_date = datetime.date(int(date_fields[0]), int(date_fields[1]), int(date_fields[2]))
+            news_publish_date.strftime("%b %d %Y")
+
+            format_content = content
+            if content is not None:
+                format_content = content.split("[")[0]
+
+            news_obj = models.newsArticle(description=description, source=source, author=author, title=title, url=url,
+                                          url_to_image=url_to_img, published_at=news_publish_date,
+                                          content=format_content, custom_url=custom_url)
+            news_results.append(news_obj)
+
+    return news_results
+
+
+def get_news_from_src(src_id):
+    if base_url != "":
+        src = "sources="+src_id
+        # the line below will format url and replace the curly braces with the category and the api_key resp.
+        custom_src_url = base_url.format(src, api_key)
+        print("The url ", custom_src_url)
+        # we're using the with as our context manager to send a request using urllib.request.urlopen()
+        with urllib.request.urlopen(custom_src_url) as url:
+            #  we use the url.read() fun to read the response and store it in the var get_movies_data
+            get_news_data = url.read()
+
+            get_news_response = json.loads(get_news_data)
+
+            news_results = None
+
+            if get_news_response["articles"]:
+                news_results_list = get_news_response["articles"]
+                news_results = process_results(news_results_list, custom_src_url)
+
+    return news_results

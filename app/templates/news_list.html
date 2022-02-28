@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macro %}
 
 {% block content %}
     <div class="block_container">
-        <p>1{{news_array}}</p>
-        <p>1{{news_array}}</p>
-        <p>{{news_array}}</p>
-        <p>{{news_array}}</p>
-        <p>{{news_array}}</p>
-        <p>{{news_array}}</p>
-        <p>1{{news_array}}</p>
-        <p>1{{news_array}}</p>
+        <div class="results_list_container">
+            {{ macro.display_news_results(news_array) }}
+        </div>
     </div>
 {% endblock %}

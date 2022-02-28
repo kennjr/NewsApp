@@ -8,6 +8,7 @@ class newsSource:
 
 
 class newsArticle:
+    """The custom_url is for the url that we create for the """
     def __init__(self, description, source, author, title, url, url_to_image, published_at, content, custom_url):
         self.description = description
         self.title = title
