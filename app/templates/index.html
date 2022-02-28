@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macro %}
 
 {% block styles %}
     {{ super() }}
@@ -12,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="block_container">
         <div class="index_filters">
             <div class="img_btn" id="btn_top_headlines">
                 <p>Top headlines</p>
@@ -22,16 +23,14 @@
             </div>
         </div>
         <div class="sources_container">
-            <div class="everything_sources_container">
-                <p class="centered_text">Type a search query into the search box above, to get related news.</p>
-            </div>
-            <div class="top_headlines_sources_container">
-                <ul>
-                    {% for agency in agencies_list %}
-                        <li>{{ agency.source_name }}</li>
-                    {% endfor %}
-                </ul>
 
+            <div id="top_headlines_sources_container">
+                <div class="news_agencies_grid_container">
+                    {{ macro.display_news_agencies(agencies_list) }}
+                </div>
+            </div>
+            <div id="everything_sources_container" class="hide_element">
+                <p class="centered_text">Type a search query into the search box above, to get related news.</p>
             </div>
         </div>
     </div>

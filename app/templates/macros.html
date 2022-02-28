@@ -1,0 +1,13 @@
+{% macro display_news_agencies(list) %}
+    {% for agency in list %}
+        <div class="agency_item_container">
+
+            <img class="agency_item_img" src="{{ agency.source_img }}" alt="Agency image">
+            <div class="agency_item_info">
+                <p class="agency_name_txt">{{ agency.source_name }}</p>
+                <p>{{ agency.source_description }}</p>
+                <a class="get_news_from_link" href="/news/top-headlines/source/{{agency.source_id}}">Get news from {{agency.source_name}}</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}
