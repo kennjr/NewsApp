@@ -11,3 +11,23 @@
         </div>
     {% endfor %}
 {% endmacro %}
+
+{% macro display_news_results(list) %}
+    {% for result in list %}
+        <div class="result_container">
+            <div class="result_inner_container">
+                <div class="result_info">
+                    <p>{{result.title}}</p>
+                    <p>Published by {{result.author}} from {{result.source}} on {{result.published_at}}</p>
+                    <p>{{result.description}}</p>
+                    <p>{{result.content}}<a href="{{result.url}}" target="_blank">Read More</a></p>
+                    <div class="divider"></div>
+                </div>
+                <div class="result_image">
+                    <img src="{{result.url_to_image}}" alt="Image for the article">
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endmacro %}
