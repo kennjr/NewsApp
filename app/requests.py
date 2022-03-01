@@ -83,7 +83,7 @@ def get_news_from_src(src_id):
         src = "sources="+src_id
         # the line below will format url and replace the curly braces with the category and the api_key resp.
         custom_src_url = top_headlines_base_url.format(src, api_key)
-
+        print("The url ", custom_src_url)
         # we're using the with as our context manager to send a request using urllib.request.urlopen()
         with urllib.request.urlopen(custom_src_url) as url:
             #  we use the url.read() fun to read the response and store it in the var get_movies_data

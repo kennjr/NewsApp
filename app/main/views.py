@@ -16,7 +16,6 @@ def index():
         return render_template('index.html', title="News App", agencies_list=agencies_list)
 
 
-
 @app.route('/news/top-headlines/source/<news_src>')
 def news_from_src(news_src):
 

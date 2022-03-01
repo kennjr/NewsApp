@@ -1,8 +1,10 @@
+import os
+
+
 class Config:
     """The key that we'll pass in our get requests"""
-    API_KEY = "a3121d3568944bf782807ac90b13b1f7"
+    API_KEY = os.environ.get('API_KEY')
     """This is for the base url that we'll use to make requests to the news api"""
-    ADD_API_KEY = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a3121d3568944bf782807ac90b13b1f7"
     NEWS_API_TOP_HEADLINES_BASE_URL = "https://newsapi.org/v2/top-headlines?{}&apiKey={}"
     NEWS_API_EVERYTHING_BASE_URL = "https://newsapi.org/v2/everything?q={}&apiKey={}"
     NEWS_SOURCES_ARRAY = [
