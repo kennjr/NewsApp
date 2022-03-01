@@ -3,7 +3,8 @@ class Config:
     API_KEY = "a3121d3568944bf782807ac90b13b1f7"
     """This is for the base url that we'll use to make requests to the news api"""
     ADD_API_KEY = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a3121d3568944bf782807ac90b13b1f7"
-    NEWS_API_BASE_URL = "https://newsapi.org/v2/top-headlines?{}&apiKey={}"
+    NEWS_API_TOP_HEADLINES_BASE_URL = "https://newsapi.org/v2/top-headlines?{}&apiKey={}"
+    NEWS_API_EVERYTHING_BASE_URL = "https://newsapi.org/v2/everything?q={}&apiKey={}"
     NEWS_SOURCES_ARRAY = [
         {
             "source_name": "Associated Press",
@@ -59,7 +60,7 @@ class Config:
             "source_img": "https://static.politico.com/0e/5b/3cf3e0f04ca58370112ab667c255/politico-logo.png",
             "source_id": "politico",
             "source_url": "https://www.politico.com",
-            "source_description": "The Politico, is a political journalism company based in Arlington County, Virginia,[3] that covers politics and policy in the United States and internationally. It primarily distributes content online but also with printed newspapers, radio, and podcasts. Its coverage in Washington, D.C., includes the U.S. Congress, lobbying, the media, and the presidency."
+            "source_description": "The Politico, is a political journalism company based in Arlington County, Virginia, that covers politics and policy in the United States and internationally. It primarily distributes content online but also with printed newspapers, radio, and podcasts. Its coverage in Washington, D.C., includes the U.S. Congress, lobbying, the media, and the presidency."
         },
         {
             "source_name": "TechCrunch",
@@ -94,7 +95,7 @@ class Config:
             "source_img": "https://logos-download.com/wp-content/uploads/2016/05/The_Washington_Post_logo_newspaper.png",
             "source_id": "the-washington-post",
             "source_url": "https://www.washingtonpost.com",
-            "source_description": "The Washington Post (also known as the Post[4] and, informally, WaPo) is an American daily newspaper published in Washington, D.C. It is the most-widely circulated newspaper within the Washington metropolitan area and has a large national audience. Daily broadsheet editions are printed for D.C., Maryland, and Virginia. The paper is well known for its political reporting and is one of the few remaining American newspapers to operate foreign bureaus."
+            "source_description": "The Washington Post (also known as the Post and, informally, WaPo) is an American daily newspaper published in Washington, D.C. It is the most-widely circulated newspaper within the Washington metropolitan area and has a large national audience. Daily broadsheet editions are printed for D.C., Maryland, and Virginia. The paper is well known for its political reporting and is one of the few remaining American newspapers to operate foreign bureaus."
         }
     ]
     pass

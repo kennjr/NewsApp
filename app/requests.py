@@ -10,14 +10,15 @@ from config import Config
 
 api_key = None
 # Getting the movie base url
-base_url = ""
+top_headlines_base_url = ""
 news_sources_list = {}
 
 
 def configure_request():
-    global api_key, base_url, news_sources_list
+    global api_key, top_headlines_base_url, news_sources_list, everything_base_url
     api_key = Config.API_KEY
-    base_url = Config.NEWS_API_BASE_URL
+    top_headlines_base_url = Config.NEWS_API_TOP_HEADLINES_BASE_URL
+    everything_base_url = Config.NEWS_API_EVERYTHING_BASE_URL
     news_sources_list = Config.NEWS_SOURCES_ARRAY
 
 
@@ -78,11 +79,33 @@ def process_results(news_results_list, custom_url):
 
 
 def get_news_from_src(src_id):
-    if base_url != "":
+    if top_headlines_base_url != "":
         src = "sources="+src_id
         # the line below will format url and replace the curly braces with the category and the api_key resp.
-        custom_src_url = base_url.format(src, api_key)
-        print("The url ", custom_src_url)
+        custom_src_url = top_headlines_base_url.format(src, api_key)
+
+        # we're using the with as our context manager to send a request using urllib.request.urlopen()
+        with urllib.request.urlopen(custom_src_url) as url:
+            #  we use the url.read() fun to read the response and store it in the var get_movies_data
+            get_news_data = url.read()
+
+            get_news_response = json.loads(get_news_data)
+
+            news_results = None
+
+            if get_news_response["articles"]:
+                news_results_list = get_news_response["articles"]
+                news_results = process_results(news_results_list, custom_src_url)
+
+    return news_results
+
+
+def get_news_from_everything(query):
+    if everything_base_url != "":
+
+        # the line below will format url and replace the curly braces with the category and the api_key resp.
+        custom_src_url = everything_base_url.format(query, api_key)
+
         # we're using the with as our context manager to send a request using urllib.request.urlopen()
         with urllib.request.urlopen(custom_src_url) as url:
             #  we use the url.read() fun to read the response and store it in the var get_movies_data
