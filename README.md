@@ -1,7 +1,7 @@
 # News App
 An app that helps you stay up-to-date with current affairs, both local and international.
 
-##Description
+## Description
 This is a simple application for anyone who's trying to stay updated with whatever's going on around the world. Get news from reputable news agencies and media companies.
 
 ## Setup/Installation requirements
@@ -20,6 +20,9 @@ The project was fully developed using the python programming language, the flask
 
 ## Support and contact details
 If you run into any issues while interacting with the application, you can contribute to it by: reporting the issue and probably suggest a fix for it
+
+## Future
+We're planning to add a sort and filter feature so that the user can be able to rearrange the results from their query based on some predefined filter and sort params
 
 ### License
 This software is publicly available under the [MIT](LICENSE) license
